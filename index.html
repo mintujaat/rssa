@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSSA Computer Center & Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #f59e0b;
+            --dark: #1f2937;
+            --light: #f9fafb;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--light);
+            color: var(--dark);
+        }
+        
+        /* Scroll animation styles */
+        .scroll-hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .scroll-show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Feature card hover animation */
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Button hover animation */
+        .btn-primary {
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+        }
+        
+        /* Hero section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+        
+        /* Floating animation for hero image */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a5b871fd-12a0-425b-a765-08e45f133813.png" alt="RSSA Computer Center logo - modern blue circular badge with computer and book icons" class="h-12">
+                    <span class="text-xl font-bold text-blue-800">RSSA Computer Center & Library</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-blue-900 hover:text-blue-600 transition-colors">Home</a>
+                    <a href="#about" class="text-gray-700 hover:text-blue-600 transition-colors">About Us</a>
+                    <a href="#services" class="text-gray-700 hover:text-blue-600 transition-colors">Services</a>
+                    <a href="#library" class="text-gray-700 hover:text-blue-600 transition-colors">Library</a>
+                    <a href="#contact" class="text-gray-700 hover:text-blue-600 transition-colors">Contact</a>
+                    <a href="#register" class="bg-blue-600 text-white px-4 py-2 rounded-full btn-primary">Register Now</a>
+                </div>
+                <button class="md:hidden focus:outline-none">
+                    <i class="fas fa-bars text-gray-700 text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="hero pt-32 pb-20 px-6 text-white">
+        <div class="container mx-auto flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 md:pr-10 scroll-hidden">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">Empowering Minds Through Technology & Knowledge</h1>
+                <p class="text-xl mb-8 text-blue-100">Your premier destination for computer education and literary resources in the region.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#services" class="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold text-center btn-primary">Our Services</a>
+                    <a href="#contact" class="border-2 border-white text-white px-6 py-3 rounded-full font-semibold text-center btn-primary">Contact Us</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 mt-12 md:mt-0 scroll-hidden">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/30f01269-2f38-42f9-995e-9c6c8846706b.png" alt="Modern computer center with students learning - bright space with rows of computers and people working" class="rounded-lg shadow-2xl floating mx-auto">
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6 bg-white">
+        <div class="container mx-auto">
+            <div class="text-center mb-16 scroll-hidden">
+                <h2 class="text-3xl font-bold text-blue-800 mb-4">About RSSA Computer Center & Library</h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10 scroll-hidden">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/89a961e8-0670-4ebe-9c31-6b487c578ce9.png" alt="Inside view of RSSA Computer Center showing collaborative workspace - modern desks with computers and students working together" class="rounded-lg shadow-lg">
+                </div>
+                <div class="md:w-1/2 scroll-hidden">
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-6">Our Mission & Vision</h3>
+                    <p class="text-gray-700 mb-4">Founded in 2005, RSSA Computer Center & Library has been at the forefront of digital education and literary resources in our community. We pride ourselves on creating an inclusive space where technology and knowledge meet to empower individuals of all ages.</p>
+                    <p class="text-gray-700 mb-6">Our vision is to become the leading educational hub where students, professionals, and community members can access cutting-edge technology and a vast collection of resources to fuel their personal and professional growth.</p>
+                    
+                    <div class="flex flex-wrap mb-6">
+                        <div class="w-full md:w-1/2 mb-4">
+                            <div class="flex items-center">
+                                <div class="mr-3 bg-blue-100 p-2 rounded-full">
+                                    <i class="fas fa-check-circle text-blue-600"></i>
+                                </div>
+                                <span>Certified Instructors</span>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2 mb-4">
+                            <div class="flex items-center">
+                                <div class="mr-3 bg-blue-100 p-2 rounded-full">
+                                    <i class="fas fa-check-circle text-blue-600"></i>
+                                </div>
+                                <span>Latest Technology</span>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2 mb-4">
+                            <div class="flex items-center">
+                                <div class="mr-3 bg-blue-100 p-2 rounded-full">
+                                    <i class="fas fa-check-circle text-blue-600"></i>
+                                </div>
+                                <span>4000+ Book Collection</span>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2 mb-4">
+                            <div class="flex items-center">
+                                <div class="mr-3 bg-blue-100 p-2 rounded-full">
+                                    <i class="fas fa-check-circle text-blue-600"></i>
+                                </div>
+                                <span>Community Programs</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#library" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-full font-semibold btn-primary">Explore Our Library</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section id="services" class="py-20 px-6 bg-gray-50">
+        <div class="container mx-auto">
+            <div class="text-center mb-16 scroll-hidden">
+                <h2 class="text-3xl font-bold text-blue-800 mb-4">Our Services</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Discover the wide range of services we offer to meet your educational and technological needs.</p>
+                <div class="w-24 h-1 bg-blue-600 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-md transition-all duration-300 feature-card scroll-hidden">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-laptop-code text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Computer Courses</h3>
+                    <p class="text-gray-600 mb-4">From basic computer literacy to advanced programming, we offer comprehensive courses for all skill levels.</p>
+                    <a href="#contact" class="text-blue-600 font-medium inline-flex items-center">Learn More <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                
+                <!-- Service Card 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-md transition-all duration-300 feature-card scroll-hidden">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-book-open text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Library Resources</h3>
+                    <p class="text-gray-600 mb-4">Access thousands of books, e-books, and research materials for education and leisure reading.</p>
+                    <a href="#library" class="text-blue-600 font-medium inline-flex items-center">Browse Collection <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                
+                <!-- Service Card 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-md transition-all duration-300 feature-card scroll-hidden">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-users text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Study Spaces</h3>
+                    <p class="text-gray-600 mb-4">Modern, comfortable study areas with computer access and high-speed internet for productive learning.</p>
+                    <a href="#contact" class="text-blue-600 font-medium inline-flex items-center">View Facilities <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                
+                <!-- Service Card 4 -->
+                <div class="bg-white p-8 rounded-xl shadow-md transition-all duration-300 feature-card scroll-hidden">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-chalkboard-teacher text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Workshops</h3>
+                    <p class="text-gray-600 mb-4">Regular workshops on emerging technologies, digital skills, and career development.</p>
+                    <a href="#register" class="text-blue-600 font-medium inline-flex items-center">Upcoming Events <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                
+                <!-- Service Card 5 -->
+                <div class="bg-white p-8 rounded-xl shadow-md transition-all duration-300 feature-card scroll-hidden">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-print text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Printing & Copying</h3>
+                    <p class="text-gray-600 mb-4">High-quality printing, scanning, and copying services at competitive prices.</p>
+                    <a href="#contact" class="text-blue-600 font-medium inline-flex items-center">Service Details <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                
+                <!-- Service Card 6 -->
+                <div class="bg-white p-8 rounded-xl shadow-md transition-all duration-300 feature-card scroll-hidden">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-headset text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Tech Support</h3>
+                    <p class="text-gray-600 mb-4">Expert assistance for computer troubleshooting and software issues.</p>
+                    <a href="#contact" class="text-blue-600 font-medium inline-flex items-center">Get Help <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Library Section -->
+    <section id="library" class="py-20 px-6 bg-white">
+        <div class="container mx-auto">
+            <div class="text-center mb-16 scroll-hidden">
+                <h2 class="text-3xl font-bold text-blue-800 mb-4">Our Library</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Explore our extensive collection of resources tailored for students, professionals, and lifelong learners.</p>
+                <div class="w-24 h-1 bg-blue-600 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row mb-16">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10 scroll-hidden">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9dd6d8f2-2571-48d9-908e-fecd226091ec.png" alt="Modern library interior view showing bookshelves and reading areas - bright space with natural light and comfortable seating" class="rounded-lg shadow-lg">
+                </div>
+                <div class="md:w-1/2 scroll-hidden">
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-6">A Treasure Trove of Knowledge</h3>
+                    <p class="text-gray-700 mb-4">Our library houses over 4,000 titles across various disciplines including computer science, business, literature, and general knowledge. We continuously update our collection to serve our community's evolving needs.</p>
+                    <p class="text-gray-700 mb-6">Enjoy our quiet reading zones, group study rooms, and digital resource stations designed to enhance your learning experience.</p>
+                    
+                    <div class="mb-6">
+                        <h4 class="font-semibold mb-3 text-blue-800">Library Services:</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-start">
+                                <span class="text-blue-600 mr-2 mt-1"><i class="fas fa-check"></i></span>
+                                <span>Regular book borrowing for members</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-600 mr-2 mt-1"><i class="fas fa-check"></i></span>
+                                <span>Access to digital resources including e-books and academic journals</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-600 mr-2 mt-1"><i class="fas fa-check"></i></span>
+                                <span>Research assistance from trained staff</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-blue-600 mr-2 mt-1"><i class="fas fa-check"></i></span>
+                                <span>Weekly reading programs and book clubs</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="flex flex-wrap">
+                        <a href="#register" class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold mr-4 mb-4 btn-primary">Become a Member</a>
+                        <a href="#contact" class="border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-full font-semibold mb-4 btn-primary">Library Hours</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Book Categories -->
+            <div class="mb-16 scroll-hidden">
+                <h3 class="text-2xl font-semibold text-center text-blue-800 mb-8">Browse Our Collection Categories</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+                    <div class="bg-blue-50 p-4 rounded-lg text-center">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-code text-xl text-blue-600"></i>
+                        </div>
+                        <span class="font-medium">Computer Science</span>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-lg text-center">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-chart-line text-xl text-blue-600"></i>
+                        </div>
+                        <span class="font-medium">Business</span>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-lg text-center">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-atom text-xl text-blue-600"></i>
+                        </div>
+                        <span class="font-medium">Science</span>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-lg text-center">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-book-open text-xl text-blue-600"></i>
+                        </div>
+                        <span class="font-medium">Literature</span>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-lg text-center">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-history text-xl text-blue-600"></i>
+                        </div>
+                        <span class="font-medium">History</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Featured Books -->
+            <div class="scroll-hidden">
+                <h3 class="text-2xl font-semibold text-center text-blue-800 mb-8">Featured Books This Month</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="bg-white p-4 rounded-lg shadow-md border border-gray-100 transform transition-transform hover:-translate-y-2">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/86b51cdf-9795-4377-99fb-2fc7dca80a60.png" alt="Book cover - Artificial Intelligence: A Modern Approach by Stuart Russell - blue cover with circuit pattern" class="w-full h-48 object-cover rounded mb-4">
+                        <h4 class="font-semibold">Artificial Intelligence: A Modern Approach</h4>
+                        <p class="text-sm text-gray-600 mb-2">Stuart Russell</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm font-medium">Computer Science</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Available</span>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-md border border-gray-100 transform transition-transform hover:-translate-y-2">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/36597ba0-0842-4e6c-a227-8b3ca810b7ef.png" alt="Book cover - Clean Code by Robert Martin - yellow cover with minimalist design" class="w-full h-48 object-cover rounded mb-4">
+                        <h4 class="font-semibold">Clean Code</h4>
+                        <p class="text-sm text-gray-600 mb-2">Robert Martin</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm font-medium">Programming</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Available</span>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-md border border-gray-100 transform transition-transform hover:-translate-y-2">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/24c49133-ca90-46e1-a49f-ae7f1528ecbf.png" alt="Book cover - Sapiens by Yuval Noah Harari - earth tones with human silhouette" class="w-full h-48 object-cover rounded mb-4">
+                        <h4 class="font-semibold">Sapiens</h4>
+                        <p class="text-sm text-gray-600 mb-2">Yuval Noah Harari</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm font-medium">History</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Available</span>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow-md border border-gray-100 transform transition-transform hover:-translate-y-2">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6b0ef462-4e09-42fa-93b4-b151ec4b3ce3.png" alt="Book cover - Atomic Habits by James Clear - white cover with blue dots pattern" class="w-full h-48 object-cover rounded mb-4">
+                        <h4 class="font-semibold">Atomic Habits</h4>
+                        <p class="text-sm text-gray-600 mb-2">James Clear</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm font-medium">Self-Help</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Available</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="py-20 px-6 bg-gray-50">
+        <div class="container mx-auto">
+            <div class="text-center mb-16 scroll-hidden">
+                <h2 class="text-3xl font-bold text-blue-800 mb-4">What Our Members Say</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Hear from our community of learners and readers about their experiences.</p>
+                <div class="w-24 h-1 bg-blue-600 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md scroll-hidden">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/de14c5da-517b-4668-8832-16f7bebb9972.png" alt="Portrait of Sarah K. - young woman with glasses smiling" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Sarah K.</h4>
+                            <p class="text-sm text-gray-600">Computer Science Student</p>
+                        </div>
+                    </div>
+                    <div class="text-gray-700 mb-4">
+                        <p>"The Python course at RSSA completely transformed my coding skills. The instructors breakdown complex concepts into easy-to-understand lessons. The library's tech books collection is also fantastic!"</p>
+                    </div>
+                    <div class="text-yellow-500">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md scroll-hidden">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bc57dd8a-c764-4d3d-8235-2e8b0092452c.png" alt="Portrait of Michael T. - middle-aged man with beard smiling" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Michael T.</h4>
+                            <p class="text-sm text-gray-600">Small Business Owner</p>
+                        </div>
+                    </div>
+                    <div class="text-gray-700 mb-4">
+                        <p>"As someone who wasn't tech-savvy, the digital literacy workshop was a game-changer for my business. The patient instructors helped me understand how to better manage my online presence and operations."</p>
+                    </div>
+                    <div class="text-yellow-500">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-md scroll-hidden">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/18a3506a-c8eb-404c-aa64-fc8a205a1dbc.png" alt="Portrait of Priya R. - young woman with long hair studying" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Priya R.</h4>
+                            <p class="text-sm text-gray-600">College Student</p>
+                        </div>
+                    </div>
+                    <div class="text-gray-700 mb-4">
+                        <p>"The library is my second home! The quiet study areas and computer access make it perfect for my research projects. The staff is always helpful in finding the right resources for my studies."</p>
+                    </div>
+                    <div class="text-yellow-500">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 bg-white">
+        <div class="container mx-auto">
+            <div class="text-center mb-16 scroll-hidden">
+                <h2 class="text-3xl font-bold text-blue-800 mb-4">Contact Us</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Have questions or want to learn more about our services? Get in touch!</p>
+                <div class="w-24 h-1 bg-blue-600 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10 scroll-hidden">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-sm">
+                        <h3 class="text-xl font-semibold mb-6 text-blue-800">Contact Information</h3>
+                        
+                        <div class="space-y-5">
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Address</h4>
+                                    <p class="text-gray-600">Hanuman mandir ke samne 
+Balaji school dress wali gali (julana 126101 , jind)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone-alt text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Phone</h4>
+                                    <p class="text-gray-600">+91 9518068084</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Email</h4>
+                                    <p class="text-gray-600">Mamta.jind1986@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-clock text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">Opening Hours</h4>
+                                    <p class="text-gray-600">Monday - saturday: 8:00 AM - 5:00 PM</p>
+                                    
+                                    <p class="text-gray-600">Sunday: Closed</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-medium mb-4 text-blue-800">Follow Us</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition-colors">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition-colors">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition-colors">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition-colors">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://wa.me/918816012576" class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600 hover:bg-green-600 hover:text-white transition-colors">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 scroll-hidden">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-sm">
+                        <h3 class="text-xl font-semibold mb-6 text-blue-800">Send Us a Message</h3>
+                        <form>
+                            <div class="mb-4">
+                                <label class="block text-gray-700 mb-2" for="name">Full Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-gray-700 mb-2" for="email">Email Address</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-gray-700 mb-2" for="subject">Subject</label>
+                                <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-6">
+                                <label class="block text-gray-700 mb-2" for="message">Message</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                            </div>
+                            <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold w-full btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Register Now CTA -->
+    <section id="register" class="py-16 px-6 bg-blue-600 text-white">
+        <div class="container mx-auto text-center scroll-hidden">
+            <h2 class="text-3xl font-bold mb-6">Ready to Join RSSA Computer Center & Library?</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">Sign up today and unlock access to all our courses, resources, and facilities designed to support your educational journey.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="#contact" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold btn-primary">Visit Us Today</a>
+                <a href="tel:+919518068084" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold btn-primary">Call Now</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12 px-6">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c4a41268-3dec-4ec9-b405-a78b949421e3.png" alt="RSSA Computer Center small logo - minimalist icon with computer and book" class="h-10 mr-2">
+                        <span class="text-xl font-bold text-white">RSSA</span>
+                    </div>
+                    <p class="mb-4">Empowering the community through education and technology since 2005.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="hover:text-white">Home</a></li>
+                        <li><a href="#about" class="hover:text-white">About Us</a></li>
+                        <li><a href="#services" class="hover:text-white">Services</a></li>
+                        <li><a href="#library" class="hover:text-white">Library</a></li>
+                        <li><a href="#contact" class="hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white">Computer Courses</a></li>
+                        <li><a href="#" class="hover:text-white">Library Membership</a></li>
+                        <li><a href="#" class="hover:text-white">Study Spaces</a></li>
+                        <li><a href="#" class="hover:text-white">Workshops</a></li>
+                        <li><a href="#" class="hover:text-white">Tech Support</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Newsletter</h4>
+                    <p class="mb-4">Subscribe to our newsletter for updates on new courses, events, and resources.</p>
+                    <form>
+                        <div class="flex">
+                            <input type="email" placeholder="Your email" class="px-4 py-2 bg-gray-800 text-white rounded-l-lg focus:outline-none w-full">
+                            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-r-lg hover:bg-blue-700"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p>© 2023 RSSA Computer Center & Library. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="#" class="hover:text-white">Privacy Policy</a>
+                        <a href="#" class="hover:text-white">Terms of Service</a>
+                        <a href="#" class="hover:text-white">FAQ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- WhatsApp & Scroll to Top Buttons -->
+    <a href="https://wa.me/918816012576" target="_blank" class="fixed bottom-24 right-8 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-all duration-300 z-50">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+    <button id="scrollTopBtn" class="fixed bottom-8 right-8 bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-blue-700">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <!-- Phone Call Floating Button -->
+<a href="tel:+919518068084" class="call-float" title="Call Us">
+  <img
+    src="https://img.icons8.com/fluency/48/phone.png"
+    alt="Call"
+  />
+</a>
+
+<style>
+  .call-float {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 100;
+    cursor: pointer;
+    background-color: #0c9;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .call-float img {
+    width: 40px;
+    height: 40px;
+  }
+</style>
+<!-- Floating Google Map Button -->
+<a href="https://maps.app.goo.gl/i9QBUmNS9Q4rDnc1A" target="_blank" class="map-float" title="Visit Our Location">
+  <img src="https://img.icons8.com/fluency/48/marker.png" alt="Map Location" />
+</a>
+
+<style>
+  .map-float {
+    position: fixed;
+    bottom: 90px; /* Adjust if other buttons like call or WhatsApp exist */
+    left: 20px;
+    z-index: 100;
+    background-color: #e91e63;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .map-float img {
+    width: 40px;
+    height: 40px;
+  }
+</style>
+    
+    <script>
+        // Scroll reveal animations
+        const scrollElements = document.querySelectorAll('.scroll-hidden');
+        
+        const elementInView = (el) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (
+                elementTop <= (window.innerHeight || document.documentElement.clientHeight)
+            );
+        };
+        
+        const displayScrollElement = (element) => {
+            element.classList.add('scroll-show');
+        };
+        
+        const hideScrollElement = (element) => {
+            element.classList.remove('scroll-show');
+        };
+        
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el)) {
+                    displayScrollElement(el);
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', () => {
+            handleScrollAnimation();
+            
+            // Show/hide scroll to top button
+            const scrollTopBtn = document.getElementById('scrollTopBtn');
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.remove('opacity-0', 'invisible');
+                scrollTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                scrollTopBtn.classList.remove('opacity-100', 'visible');
+                scrollTopBtn.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        // Initialize animations on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                handleScrollAnimation();
+            }, 300);
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Scroll to top button
+        document.getElementById('scrollTopBtn').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
+
