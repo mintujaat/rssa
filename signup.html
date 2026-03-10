@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admission - RSSA Computer Center</title>
+<link rel="icon" type="image/png" href="https://i.ibb.co/9HfWmtby/9b40df44cf64.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --primary: #0da6d8;
+  --primary-dark: #0879a3;
+  --secondary: #0d2a47;
+  --accent: #ffcc00;
+  --success: #10b981;
+  --white: #ffffff;
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-500: #64748b;
+  --gray-700: #334155;
+  --gray-900: #0f172a;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0d2a47 0%, #1a3a5c 50%, var(--primary-dark) 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* ===== HEADER ===== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: linear-gradient(135deg, var(--secondary) 0%, #1a3a5c 100%);
+  padding: 12px 20px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-section img {
+  height: 45px;
+}
+
+.header-title h1 {
+  color: var(--white);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* ===== BACK BUTTON ===== */
+.back-btn {
+  position: fixed;
+  top: 80px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: var(--white);
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(-5px);
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  max-width: 550px;
+  margin: 80px auto 40px;
+}
+
+/* ===== SIGNUP BOX ===== */
+.signup-box {
+  background: var(--white);
+  border-radius: 25px;
+  padding: 40px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+  animation: slideUp 0.6s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.signup-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.signup-header h2 {
+  color: var(--gray-900);
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.signup-header h2 i {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.signup-header p {
+  color: var(--gray-500);
+  font-size: 1rem;
+}
+
+/* ===== BENEFITS ===== */
+.benefits-card {
+  background: linear-gradient(135deg, #e0f7ff 0%, #b3e5fc 100%);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 25px;
+}
+
+.benefits-card h3 {
+  color: var(--primary-dark);
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.benefits-card ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.benefits-card li {
+  color: var(--gray-700);
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.benefits-card li::before {
+  content: "✓";
+  color: var(--primary);
+  font-weight: bold;
+}
+
+/* ===== FORM ===== */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  color: var(--gray-700);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.form-group label span {
+  color: #ef4444;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid var(--gray-200);
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background: var(--gray-50);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: var(--white);
+  box-shadow: 0 0 0 4px rgba(13, 166, 216, 0.1);
+}
+
+.form-group select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 18px center;
+}
+
+.form-group textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* ===== SUBMIT BUTTON ===== */
+.submit-btn {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: var(--white);
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(13, 166, 216, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(13, 166, 216, 0.4);
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ===== STATUS MESSAGE ===== */
+.status-message {
+  padding: 15px 20px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+  display: none;
+  animation: slideUp 0.3s ease;
+}
+
+.status-message.show {
+  display: block;
+}
+
+.status-message.success {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  color: #065f46;
+  border: 2px solid #34d399;
+}
+
+.status-message.error {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  color: #991b1b;
+  border: 2px solid #f87171;
+}
+
+/* ===== LOADER ===== */
+.loader {
+  display: none;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.loader.show {
+  display: block;
+}
+
+.loader div {
+  width: 30px;
+  height: 30px;
+  border: 3px solid var(--gray-200);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== LOGIN LINK ===== */
+.login-link {
+  text-align: center;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid var(--gray-200);
+  color: var(--gray-500);
+  font-size: 0.95rem;
+}
+
+.login-link a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  text-align: center;
+  padding: 30px 20px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+.footer p {
+  margin-bottom: 5px;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .header-content {
+    justify-content: center;
+  }
+  
+  .header-title {
+    display: none;
+  }
+  
+  .back-btn {
+    top: 75px;
+    left: 10px;
+    padding: 10px 15px;
+    font-size: 0.85rem;
+  }
+  
+  .container {
+    margin-top: 70px;
+    padding: 0 10px;
+  }
+  
+  .signup-box {
+    padding: 25px 20px;
+  }
+  
+  .signup-header h2 {
+    font-size: 1.6rem;
+  }
+  
+  .benefits-card ul {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 12px 15px;
+    font-size: 0.95rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-content">
+    <div class="logo-section">
+      <img src="https://i.ibb.co/9HfWmtby/9b40df44cf64.png" id="logo" alt="Logo">
+      <div class="header-title">
+        <h1 id="centerName">RSSA Computer Center</h1>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- BACK BUTTON -->
+<a href="index.html" class="back-btn">
+  <i class="fas fa-arrow-left"></i> Back
+</a>
+
+<div class="container">
+
+  <div class="signup-box">
+    <!-- STATUS MESSAGE -->
+    <div id="statusMessage" class="status-message"></div>
+
+    <div class="signup-header">
+      <h2><i class="fas fa-user-graduate"></i> Student Registration</h2>
+      <p>Join RSSA Computer Center today</p>
+    </div>
+
+    <!-- BENEFITS -->
+    <div class="benefits-card">
+      <h3><i class="fas fa-star"></i> Why Register With Us?</h3>
+      <ul>
+        <li>Expert Trainers</li>
+        <li>Certificate</li>
+        <li>Job Support</li>
+        <li>Placement Help</li>
+      </ul>
+    </div>
+
+    <form id="signupForm">
+      <div class="form-group">
+        <label>Full Name <span>*</span></label>
+        <input type="text" id="fullName" placeholder="Enter your full name" required autocomplete="name">
+      </div>
+
+      <div class="form-group">
+        <label>Mobile Number <span>*</span></label>
+        <input type="tel" id="mobile" placeholder="Enter 10-digit mobile number" required autocomplete="tel" maxlength="10" pattern="[0-9]{10}">
+      </div>
+
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="email" placeholder="Enter your email (optional)" autocomplete="email">
+      </div>
+
+      <div class="form-group">
+        <label>Select Course <span>*</span></label>
+        <select id="course" required>
+          <option value="">-- Select a Course --</option>
+          <!-- Courses will be loaded from Firebase -->
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Address</label>
+        <textarea id="address" placeholder="Enter your address (optional)"></textarea>
+      </div>
+
+      <button type="submit" id="submitBtn" class="submit-btn">
+        <i class="fas fa-paper-plane"></i> Submit Registration
+      </button>
+    </form>
+
+    <!-- LOADING -->
+    <div class="loader" id="loader">
+      <div></div>
+    </div>
+
+    <!-- LOGIN LINK -->
+    <div class="login-link">
+      Already registered? <a href="student.html">Check Fees Status</a>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2024 RSSA Computer Center Julana</p>
+  <p>Bus Stand Road, Julana, Haryana</p>
+</footer>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+import { getFirestore, doc, getDoc, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAfzNKih4tBJulHl2nvUrqT57el14F1qEA",
+  authDomain: "computerweb-e00b2.firebaseapp.com",
+  projectId: "computerweb-e00b2",
+  storageBucket: "computerweb-e00b2.appspot.com",
+  messagingSenderId: "272175031990",
+  appId: "1:272175031990:web:cca4e8f1966456bebde817"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Load center name
+async function loadCenterName() {
+  try {
+    const snap = await getDoc(doc(db, "settings", "header"));
+    if (snap.exists()) {
+      document.getElementById("centerName").innerText = snap.data().centerName || "RSSA Computer Center";
+      document.getElementById("logo").src = snap.data().logoURL || "https://i.ibb.co/9HfWmtby/9b40df44cf64.png";
+    }
+  } catch(e) { console.log(e); }
+}
+loadCenterName();
+
+// Load courses from Firebase
+async function loadCourses() {
+  try {
+    const snap = await getDocs(collection(db, "courses"));
+    const select = document.getElementById("course");
+    
+    snap.forEach(d => {
+      const c = d.data();
+      const option = document.createElement("option");
+      option.value = c.name;
+      option.textContent = `${c.name} (${c.duration} Months) - ₹${c.fees}`;
+      select.appendChild(option);
+    });
+    
+    // Add "Other" option
+    const otherOption = document.createElement("option");
+    otherOption.value = "Other";
+    otherOption.textContent = "Other / Not Sure";
+    select.appendChild(otherOption);
+  } catch(e) { 
+    console.log(e);
+    // Fallback options if Firebase fails
+    const select = document.getElementById("course");
+    const fallbacks = ["Basic Computer", "Advanced Excel", "Tally Prime", "Web Designing", "Python Programming", "Java Programming", "Graphic Designing", "Digital Marketing", "DCA", "ADCA", "Other"];
+    fallbacks.forEach(c => {
+      const option = document.createElement("option");
+      option.value = c;
+      option.textContent = c;
+      select.appendChild(option);
+    });
+  }
+}
+loadCourses();
+
+// Form submission
+document.getElementById("signupForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const submitBtn = document.getElementById("submitBtn");
+  const loader = document.getElementById("loader");
+  const statusMessage = document.getElementById("statusMessage");
+
+  const fullName = document.getElementById("fullName").value.trim();
+  const mobile = document.getElementById("mobile").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const course = document.getElementById("course").value;
+  const address = document.getElementById("address").value.trim();
+
+  if (!fullName || !mobile || !course) {
+    showStatus("Please fill in all required fields!", "error");
+    return;
+  }
+
+  if (mobile.length !== 10 || !/^\d+$/.test(mobile)) {
+    showStatus("Please enter a valid 10-digit mobile number!", "error");
+    return;
+  }
+
+  // Show loading
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+  loader.classList.add("show");
+
+  try {
+    await addDoc(collection(db, "signups"), {
+      name: fullName,
+      mobile: mobile,
+      email: email || "",
+      course: course,
+      address: address || "",
+      status: "new",
+      created_at: serverTimestamp()
+    });
+
+    showStatus("✅ Registration Successful! We will contact you soon.", "success");
+    document.getElementById("signupForm").reset();
+
+  } catch(error) {
+    console.error("Firebase Error:", error);
+    showStatus("❌ Error submitting form. Please try again.", "error");
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Submit Registration';
+    loader.classList.remove("show");
+  }
+});
+
+function showStatus(message, type) {
+  const statusMessage = document.getElementById("statusMessage");
+  statusMessage.innerText = message;
+  statusMessage.className = `status-message ${type} show`;
+  
+  setTimeout(() => {
+    statusMessage.classList.remove("show");
+  }, 5000);
+}
+</script>
+
+</body>
+</html>
+

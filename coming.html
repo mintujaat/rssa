@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admission - RSSA Computer Center</title>
+<link rel="icon" type="image/png" href="https://i.ibb.co/9HfWmtby/9b40df44cf64.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --primary: #0da6d8;
+  --primary-dark: #0879a3;
+  --secondary: #0d2a47;
+  --accent: #ffcc00;
+  --success: #10b981;
+  --white: #ffffff;
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-500: #64748b;
+  --gray-700: #334155;
+  --gray-900: #0f172a;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--gray-100);
+  color: var(--gray-700);
+  min-height: 100vh;
+}
+
+/* ===== HEADER ===== */
+.header {
+  background: linear-gradient(135deg, var(--secondary) 0%, #1a3a5c 100%);
+  color: var(--white);
+  padding: 30px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 50%);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.header-content {
+  position: relative;
+  z-index: 1;
+}
+
+.header-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--accent) 0%, #ffa500 100%);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  box-shadow: 0 10px 30px rgba(255, 204, 0, 0.3);
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.header-icon i {
+  font-size: 2rem;
+  color: var(--secondary);
+}
+
+.header h1 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.header p {
+  opacity: 0.9;
+  font-size: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ===== NAV BUTTONS ===== */
+.nav-section {
+  background: var(--white);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.nav-btn {
+  padding: 14px 28px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-btn.primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: var(--white);
+  box-shadow: 0 6px 20px rgba(13, 166, 216, 0.3);
+}
+
+.nav-btn.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(13, 166, 216, 0.4);
+}
+
+.nav-btn.secondary {
+  background: var(--gray-100);
+  color: var(--gray-700);
+  border: 2px solid var(--gray-200);
+}
+
+.nav-btn.secondary:hover {
+  background: var(--gray-200);
+}
+
+/* ===== MAIN CONTENT ===== */
+.main-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* ===== STEPS SECTION ===== */
+.section {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 35px;
+  margin-bottom: 25px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+.section-title {
+  font-size: 1.4rem;
+  color: var(--gray-900);
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-title i {
+  color: var(--primary);
+}
+
+.steps-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 20px;
+  background: var(--gray-50);
+  border-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+.step-item:hover {
+  background: var(--gray-100);
+  transform: translateX(5px);
+}
+
+.step-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 1.3rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.step-content h3 {
+  color: var(--gray-900);
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.step-content p {
+  color: var(--gray-500);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* ===== DOCUMENTS SECTION ===== */
+.docs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.doc-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px;
+  background: var(--gray-50);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.doc-item:hover {
+  background: #e0f7ff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(13, 166, 216, 0.15);
+}
+
+.doc-check {
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.doc-name {
+  color: var(--gray-900);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* ===== EMPTY STATE ===== */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--gray-500);
+}
+
+.empty-state i {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  color: var(--gray-300);
+}
+
+/* ===== WHATSAPP BUTTON ===== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+  color: var(--white);
+  padding: 16px 35px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 10px 35px rgba(37, 211, 102, 0.4);
+  animation: pulse 2s infinite;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.whatsapp-float:hover {
+  transform: translateX(-50%) translateY(-3px);
+  box-shadow: 0 15px 45px rgba(37, 211, 102, 0.5);
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 10px 35px rgba(37, 211, 102, 0.4); }
+  50% { box-shadow: 0 10px 50px rgba(37, 211, 102, 0.6); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .header h1 { font-size: 1.4rem; }
+  .header p { font-size: 0.9rem; }
+  .nav-section { padding: 15px; }
+  .nav-btn { width: 100%; justify-content: center; }
+  .section { padding: 25px 20px; }
+  .step-item { flex-direction: column; text-align: center; }
+  .step-icon { margin: 0 auto; }
+  .doc-item { flex-direction: column; text-align: center; }
+  .doc-check { margin: 0 auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-content">
+    <div class="header-icon">
+      <i class="fas fa-graduation-cap"></i>
+    </div>
+    <h1>Admission Open</h1>
+    <p>Join RSSA Computer Center Julana for professional computer education</p>
+  </div>
+</header>
+
+<!-- NAVIGATION -->
+<nav class="nav-section">
+  <a href="signup.html" class="nav-btn primary">
+    <i class="fas fa-user-plus"></i> Online Apply
+  </a>
+  <a href="index.html" class="nav-btn secondary">
+    <i class="fas fa-home"></i> Back to Home
+  </a>
+</nav>
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+
+  <!-- HOW TO APPLY -->
+  <section class="section">
+    <h2 class="section-title">
+      <i class="fas fa-clipboard-list"></i> How to Apply - 4 Easy Steps
+    </h2>
+    <div class="steps-container">
+      <div class="step-item">
+        <div class="step-icon">1</div>
+        <div class="step-content">
+          <h3>Choose Your Course</h3>
+          <p>Select from our professional courses like DCA, ADCA, Web Designing, Python, Tally, and more.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-icon">2</div>
+        <div class="step-content">
+          <h3>Prepare Documents</h3>
+          <p>Gather the required documents listed below (Photo, Aadhar, etc.)</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-icon">3</div>
+        <div class="step-content">
+          <h3>Submit Application</h3>
+          <p>Click "Online Apply" button or send documents on WhatsApp.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-icon">4</div>
+        <div class="step-content">
+          <h3>Get Confirmation</h3>
+          <p>Our team will verify and send your student ID within 24 hours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REQUIRED DOCUMENTS -->
+  <section class="section">
+    <h2 class="section-title">
+      <i class="fas fa-file-alt"></i> Required Documents
+    </h2>
+    <div class="docs-grid" id="docsGrid">
+      <div class="empty-state">
+        <i class="fas fa-spinner fa-spin"></i>
+        <p>Loading documents...</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- WHATSAPP BUTTON -->
+<a id="whatsappBtn" class="whatsapp-float" href="#" target="_blank">
+  <i class="fab fa-whatsapp"></i> Apply on WhatsApp
+</a>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+import { getFirestore, collection, getDocs, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAfzNKih4tBJulHl2nvUrqT57el14F1qEA",
+  authDomain: "computerweb-e00b2.firebaseapp.com",
+  projectId: "computerweb-e00b2",
+  storageBucket: "computerweb-e00b2.appspot.com",
+  messagingSenderId: "272175031990",
+  appId: "1:272175031990:web:cca4e8f1966456bebde817"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Load Documents
+async function loadDocuments() {
+  const grid = document.getElementById("docsGrid");
+  
+  try {
+    const snap = await getDocs(collection(db, "required_documents"));
+    
+    if (snap.empty) {
+      grid.innerHTML = `
+        <div class="empty-state" style="grid-column: 1/-1;">
+          <i class="fas fa-check-circle"></i>
+          <p>No documents required at the moment.</p>
+        </div>`;
+      return;
+    }
+
+    grid.innerHTML = "";
+    snap.forEach(d => {
+      const data = d.data();
+      grid.innerHTML += `
+        <div class="doc-item">
+          <div class="doc-check"><i class="fas fa-check"></i></div>
+          <div class="doc-name">${data.title || "Document"}</div>
+        </div>`;
+    });
+  } catch (err) {
+    grid.innerHTML = `
+      <div class="empty-state" style="grid-column: 1/-1;">
+        <i class="fas fa-exclamation-triangle"></i>
+        <p>Error loading documents</p>
+      </div>`;
+  }
+}
+
+// Load WhatsApp
+async function loadWhatsApp() {
+  try {
+    const snap = await getDoc(doc(db, "settings", "header"));
+    if (snap.exists()) {
+      const num = snap.data().mobile || "919518068084";
+      document.getElementById("whatsappBtn").href = 
+        `https://wa.me/${num}?text=Hello,%20I%20want%20to%20take%20admission.%20Please%20guide%20me.`;
+    }
+  } catch (e) {
+    document.getElementById("whatsappBtn").href = "https://wa.me/919518068084";
+  }
+}
+
+loadDocuments();
+loadWhatsApp();
+</script>
+
+</body>
+</html>
+

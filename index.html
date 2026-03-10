@@ -1,767 +1,1600 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RSSA Computer Center & Library</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        
-        :root {
-            --primary: #2563eb;
-            --secondary: #1e40af;
-            --accent: #f59e0b;
-            --dark: #1f2937;
-            --light: #f9fafb;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-            background-color: var(--light);
-            color: var(--dark);
-        }
-        
-        /* Scroll animation styles */
-        .scroll-hidden {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease-out;
-        }
-        
-        .scroll-show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Feature card hover animation */
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Button hover animation */
-        .btn-primary {
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
-        }
-        
-        /* Hero section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-        }
-        
-        /* Floating animation for hero image */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .floating {
-            animation: float 6s ease-in-out infinite;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RSSA Computer Center - Best Computer Education</title>
+<link rel="icon" type="image/png" href="https://i.ibb.co/9HfWmtby/9b40df44cf64.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --primary: #0da6d8;
+  --primary-dark: #0879a3;
+  --secondary: #0d2a47;
+  --accent: #ffcc00;
+  --success: #10b981;
+  --white: #ffffff;
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-500: #64748b;
+  --gray-700: #334155;
+  --gray-900: #0f172a;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--gray-50);
+  color: var(--gray-700);
+  overflow-x: hidden;
+}
+
+/* ===== HEADER ===== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: linear-gradient(135deg, var(--secondary) 0%, #1a3a5c 100%);
+  padding: 12px 20px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.header.scrolled {
+  padding: 8px 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-section img {
+  height: 50px;
+  width: auto;
+  animation: floatLogo 3s ease-in-out infinite;
+}
+
+@keyframes floatLogo {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.header-title h1 {
+  color: var(--white);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.header-title .status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.status-badge.open {
+  background: rgba(16, 185, 129, 0.2);
+  color: #10b981;
+}
+
+.status-badge.closed {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulseDot 1.5s infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+/* ===== NAVIGATION ===== */
+.nav-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-btn {
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-btn.primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: var(--white);
+  box-shadow: 0 4px 15px rgba(13, 166, 216, 0.3);
+}
+
+.nav-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(13, 166, 216, 0.4);
+}
+
+.nav-btn.secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  margin-top: 70px;
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--secondary) 0%, #1a3a5c 50%, var(--primary-dark) 100%);
+}
+
+.hero-slider {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.hero-slide.active {
+  opacity: 1;
+}
+
+.hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(13, 42, 71, 0.9) 0%, rgba(13, 166, 216, 0.3) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  text-align: center;
+  color: var(--white);
+  max-width: 800px;
+  padding: 20px;
+  animation: fadeInUp 1s ease;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 15px;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content h1 span {
+  background: linear-gradient(135deg, var(--accent) 0%, #ffa500 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  opacity: 0.9;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-hero {
+  padding: 14px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-hero.primary {
+  background: linear-gradient(135deg, var(--accent) 0%, #ffa500 100%);
+  color: var(--secondary);
+  box-shadow: 0 8px 25px rgba(255, 204, 0, 0.4);
+}
+
+.btn-hero.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(255, 204, 0, 0.5);
+}
+
+.btn-hero.secondary {
+  background: transparent;
+  color: var(--white);
+  border: 2px solid var(--white);
+}
+
+.btn-hero.secondary:hover {
+  background: var(--white);
+  color: var(--secondary);
+}
+
+.hero-nav {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.hero-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-dot.active {
+  background: var(--accent);
+  transform: scale(1.3);
+}
+
+/* ===== MARQUEE ===== */
+.marquee {
+  background: linear-gradient(90deg, var(--accent) 0%, #ffd700 100%);
+  padding: 12px 0;
+  overflow: hidden;
+}
+
+.marquee-content {
+  white-space: nowrap;
+  animation: marquee 20s linear infinite;
+}
+
+.marquee-content span {
+  color: var(--secondary);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0 40px;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ===== STATS SECTION ===== */
+.stats-section {
+  background: linear-gradient(135deg, var(--secondary) 0%, #1a3a5c 100%);
+  padding: 60px 20px;
+}
+
+.stats-grid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.stat-icon {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px;
+  font-size: 1.8rem;
+  color: var(--white);
+  box-shadow: 0 10px 30px rgba(13, 166, 216, 0.3);
+}
+
+.stat-card h3 {
+  color: var(--white);
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+
+.stat-card p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* ===== COURSES SECTION ===== */
+.courses-section {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  color: var(--gray-900);
+  margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+.section-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  border-radius: 2px;
+}
+
+.section-header p {
+  color: var(--gray-500);
+  font-size: 1.1rem;
+  margin-top: 20px;
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.course-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+.course-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(13, 166, 216, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.course-card:hover::before {
+  left: 100%;
+}
+
+.course-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary);
+  box-shadow: 0 20px 60px rgba(13, 166, 216, 0.2);
+}
+
+.course-icon {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #e0f7ff 0%, #b3e5fc 100%);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.course-card h3 {
+  color: var(--gray-900);
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.course-card .duration {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.course-card .fees {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--success);
+}
+
+.course-card .fees span {
+  font-size: 0.9rem;
+  color: var(--gray-500);
+  font-weight: 500;
+}
+
+.course-card .enroll-btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: var(--white);
+  text-align: center;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.course-card .enroll-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(13, 166, 216, 0.3);
+}
+
+.course-tag {
+  position: absolute;
+  top: 15px;
+  right: -30px;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: var(--white);
+  padding: 5px 40px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  transform: rotate(45deg);
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+}
+
+/* ===== ABOUT SECTION ===== */
+.about-section {
+  background: var(--white);
+  padding: 80px 20px;
+}
+
+.about-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.about-content h2 {
+  font-size: 2.5rem;
+  color: var(--gray-900);
+  margin-bottom: 20px;
+}
+
+.about-content p {
+  color: var(--gray-500);
+  line-height: 1.8;
+  margin-bottom: 25px;
+  font-size: 1.05rem;
+}
+
+.about-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.about-feature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--gray-700);
+  font-weight: 500;
+}
+
+.about-feature i {
+  color: var(--success);
+  font-size: 1.2rem;
+}
+
+.about-image {
+  position: relative;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  animation: floatImage 4s ease-in-out infinite;
+}
+
+@keyframes floatImage {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+.about-image::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  border-radius: 20px;
+  z-index: -1;
+}
+
+/* ===== CONTACT SECTION ===== */
+.contact-section {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, var(--gray-100) 0%, var(--white) 100%);
+}
+
+.contact-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+}
+
+.contact-info h2 {
+  font-size: 2.5rem;
+  color: var(--gray-900);
+  margin-bottom: 20px;
+}
+
+.contact-info > p {
+  color: var(--gray-500);
+  margin-bottom: 30px;
+  font-size: 1.05rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: var(--white);
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+  transform: translateX(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.contact-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 1.3rem;
+}
+
+.contact-details h4 {
+  color: var(--gray-900);
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.contact-details p {
+  color: var(--gray-500);
+  font-size: 0.95rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.social-link {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  transform: translateY(-5px);
+}
+
+.social-link.whatsapp { background: linear-gradient(135deg, #25d366 0%, #20b559 100%); }
+.social-link.facebook { background: linear-gradient(135deg, #1877f2 0%, #1565c0 100%); }
+.social-link.instagram { background: linear-gradient(135deg, #e1306c 0%, #c41e3a 100%); }
+.social-link.youtube { background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%); }
+
+.contact-form {
+  background: var(--white);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form h3 {
+  color: var(--gray-900);
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 15px 20px;
+  border: 2px solid var(--gray-200);
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background: var(--gray-50);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: var(--white);
+  box-shadow: 0 0 0 4px rgba(13, 166, 216, 0.1);
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: var(--white);
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(13, 166, 216, 0.3);
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(13, 166, 216, 0.4);
+}
+
+/* ===== LOCATION SECTION ===== */
+.location-section {
+  padding: 80px 20px;
+  background: var(--white);
+  text-align: center;
+}
+
+.location-section h2 {
+  font-size: 2.5rem;
+  color: var(--gray-900);
+  margin-bottom: 10px;
+}
+
+.location-section p {
+  color: var(--gray-500);
+  margin-bottom: 40px;
+}
+
+.location-image {
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.location-image:hover {
+  transform: scale(1.02);
+}
+
+.location-image img {
+  width: 100%;
+  display: block;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: linear-gradient(135deg, var(--secondary) 0%, #0d1929 100%);
+  color: var(--white);
+  padding: 50px 20px 30px;
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.footer p {
+  opacity: 0.8;
+  margin-bottom: 8px;
+}
+
+.footer-bottom {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.9rem;
+  opacity: 0.6;
+}
+
+/* ===== FLOATING BUTTONS ===== */
+.floating-call {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #25d366 0%, #20b559 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 1.5rem;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+  z-index: 999;
+  transition: all 0.3s ease;
+  animation: pulseCall 2s infinite;
+}
+
+@keyframes pulseCall {
+  0%, 100% { transform: scale(1); box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4); }
+  50% { transform: scale(1.1); box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5); }
+}
+
+.floating-call:hover {
+  transform: scale(1.1);
+}
+
+/* ===== POPUP ===== */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+  backdrop-filter: blur(5px);
+}
+
+.popup-box {
+  background: var(--white);
+  max-width: 450px;
+  width: 90%;
+  border-radius: 20px;
+  overflow: hidden;
+  animation: popupZoom 0.4s ease;
+}
+
+@keyframes popupZoom {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.popup-box img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.popup-content {
+  padding: 25px;
+  text-align: center;
+}
+
+.popup-content h3 {
+  color: var(--gray-900);
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.popup-content p {
+  color: var(--gray-500);
+  margin-bottom: 20px;
+}
+
+.popup-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: 600;
+}
+
+.popup-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 35px;
+  height: 35px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* ===== STATUS MESSAGE ===== */
+.status-toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  padding: 15px 30px;
+  border-radius: 10px;
+  color: var(--white);
+  font-weight: 600;
+  z-index: 9999;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.status-toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.status-toast.success { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+.status-toast.error { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); }
+
+/* ===== NOTIFICATIONS ===== */
+.notify-btn {
+  position: fixed;
+  bottom: 110px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--accent) 0%, #ffa500 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--secondary);
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(255, 204, 0, 0.4);
+  z-index: 999;
+  transition: all 0.3s ease;
+}
+
+.notify-btn:hover {
+  transform: scale(1.1);
+}
+
+.notify-box {
+  position: fixed;
+  bottom: 190px;
+  right: 30px;
+  width: 320px;
+  max-height: 400px;
+  background: var(--white);
+  border-radius: 15px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  display: none;
+  overflow: hidden;
+}
+
+.notify-box.show {
+  display: block;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.notify-header {
+  background: linear-gradient(135deg, var(--secondary) 0%, #1a3a5c 100%);
+  color: var(--white);
+  padding: 15px 20px;
+  font-weight: 600;
+}
+
+.notify-list {
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.notify-item {
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--gray-200);
+}
+
+.notify-item h4 {
+  color: var(--gray-900);
+  font-size: 0.95rem;
+  margin-bottom: 5px;
+}
+
+.notify-item p {
+  color: var(--gray-500);
+  font-size: 0.85rem;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .about-container,
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .about-image::before {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-content {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .nav-buttons {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .hero {
+    height: 400px;
+  }
+  
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-content p {
+    font-size: 1rem;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .stat-card {
+    padding: 20px;
+  }
+  
+  .stat-card h3 {
+    font-size: 2rem;
+  }
+  
+  .courses-section,
+  .about-section,
+  .contact-section,
+  .location-section {
+    padding: 50px 15px;
+  }
+  
+  .section-header h2 {
+    font-size: 1.8rem;
+  }
+  
+  .about-features {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-form {
+    padding: 25px;
+  }
+  
+  .floating-call,
+  .notify-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+  
+  .notify-box {
+    width: calc(100% - 40px);
+    right: 20px;
+    left: 20px;
+  }
+}
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-white shadow-md z-50">
-        <div class="container mx-auto px-6 py-3">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-4">
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a5b871fd-12a0-425b-a765-08e45f133813.png" alt="RSSA Computer Center logo - modern blue circular badge with computer and book icons" class="h-12">
-                    <span class="text-xl font-bold text-blue-800">RSSA Computer Center & Library</span>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="text-blue-900 hover:text-blue-600 transition-colors">Home</a>
-                    <a href="#about" class="text-gray-700 hover:text-blue-600 transition-colors">About Us</a>
-                    <a href="#services" class="text-gray-700 hover:text-blue-600 transition-colors">Services</a>
-                    <a href="#library" class="text-gray-700 hover:text-blue-600 transition-colors">Library</a>
-                    <a href="#contact" class="text-gray-700 hover:text-blue-600 transition-colors">Contact</a>
-                    <a href="#register" class="bg-blue-600 text-white px-4 py-2 rounded-full btn-primary">Register Now</a>
-                </div>
-                <button class="md:hidden focus:outline-none">
-                    <i class="fas fa-bars text-gray-700 text-2xl"></i>
-                </button>
-            </div>
-        </div>
-    </nav>
-    
-    <!-- Hero Section -->
-    <section id="home" class="hero pt-32 pb-20 px-6 text-white">
-        <div class="container mx-auto flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 md:pr-10 scroll-hidden">
-                <h1 class="text-4xl md:text-5xl font-bold mb-6">Empowering Minds Through Technology & Knowledge</h1>
-                <p class="text-xl mb-8 text-blue-100">Your premier destination for computer education and literary resources in the region.</p>
-                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                    <a href="#services" class="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold text-center btn-primary">Our Services</a>
-                    <a href="#contact" class="border-2 border-white text-white px-6 py-3 rounded-full font-semibold text-center btn-primary">Contact Us</a>
-                </div>
-            </div>
-            <div class="md:w-1/2 mt-12 md:mt-0 scroll-hidden">
-                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/30f01269-2f38-42f9-995e-9c6c8846706b.png" alt="Modern computer center with students learning - bright space with rows of computers and people working" class="rounded-lg shadow-2xl floating mx-auto">
-            </div>
-        </div>
-    </section>
-    
-    <!-- About Section -->
-    <section id="about" class="py-20 px-6 bg-white">
-        <div class="container mx-auto">
-            <div class="text-center mb-16 scroll-hidden">
-                <h2 class="text-3xl font-bold text-blue-800 mb-4">About RSSA Computer Center & Library</h2>
-                <div class="w-24 h-1 bg-blue-600 mx-auto"></div>
-            </div>
-            
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10 scroll-hidden">
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/89a961e8-0670-4ebe-9c31-6b487c578ce9.png" alt="Inside view of RSSA Computer Center showing collaborative workspace - modern desks with computers and students working together" class="rounded-lg shadow-lg">
-                </div>
-                <div class="md:w-1/2 scroll-hidden">
-                    <h3 class="text-2xl font-semibold text-blue-800 mb-6">Our Mission & Vision</h3>
-                    <p class="text-gray-700 mb-4">Founded in 2005, RSSA Computer Center & Library has been at the forefront of digital education and literary resources in our community. We pride ourselves on creating an inclusive space where technology and knowledge meet to empower individuals of all ages.</p>
-                    <p class="text-gray-700 mb-6">Our vision is to become the leading educational hub where students, professionals, and community members can access cutting-edge technology and a vast collection of resources to fuel their personal and professional growth.</p>
-                    
-                    <div class="flex flex-wrap mb-6">
-                        <div class="w-full md:w-1/2 mb-4">
-                            <div class="flex items-center">
-                                <div class="mr-3 bg-blue-100 p-2 rounded-full">
-                                    <i class="fas fa-check-circle text-blue-600"></i>
-                                </div>
-                                <span>Certified Instructors</span>
-                            </div>
-                        </div>
-                        <div class="w-full md:w-1/2 mb-4">
-                            <div class="flex items-center">
-                                <div class="mr-3 bg-blue-100 p-2 rounded-full">
-                                    <i class="fas fa-check-circle text-blue-600"></i>
-                                </div>
-                                <span>Latest Technology</span>
-                            </div>
-                        </div>
-                        <div class="w-full md:w-1/2 mb-4">
-                            <div class="flex items-center">
-                                <div class="mr-3 bg-blue-100 p-2 rounded-full">
-                                    <i class="fas fa-check-circle text-blue-600"></i>
-                                </div>
-                                <span>4000+ Book Collection</span>
-                            </div>
-                        </div>
-                        <div class="w-full md:w-1/2 mb-4">
-                            <div class="flex items-center">
-                                <div class="mr-3 bg-blue-100 p-2 rounded-full">
-                                    <i class="fas fa-check-circle text-blue-600"></i>
-                                </div>
-                                <span>Community Programs</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <a href="#library" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-full font-semibold btn-primary">Explore Our Library</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Services Section -->
-    <section id="services" class="py-20 px-6 bg-gray-50">
-        <div class="container mx-auto">
-            <div class="text-center mb-16 scroll-hidden">
-                <h2 class="text-3xl font-bold text-blue-800 mb-4">Our Services</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Discover the wide range of services we offer to meet your educational and technological needs.</p>
-                <div class="w-24 h-1 bg-blue-600 mx-auto mt-4"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Service Card 1 -->
-                <div class="bg-white p-8 rounded-xl shadow-md transition-all duration-300 feature-card scroll-hidden">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-laptop-code text-2xl text-blue-600"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">Computer Courses</h3>
-                    <p class="text-gray-600 mb-4">From basic computer literacy to advanced programming, we offer comprehensive courses for all skill levels.</p>
-                    <a href="#contact" class="text-blue-600 font-medium inline-flex items-center">Learn More <i class="fas fa-arrow-right ml-2"></i></a>
-                </div>
-                
-                <!-- Service Card 2 -->
-                <div class="bg-white p-8 rounded-xl shadow-md transition-all duration-300 feature-card scroll-hidden">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-book-open text-2xl text-blue-600"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">Library Resources</h3>
-                    <p class="text-gray-600 mb-4">Access thousands of books, e-books, and research materials for education and leisure reading.</p>
-                    <a href="#library" class="text-blue-600 font-medium inline-flex items-center">Browse Collection <i class="fas fa-arrow-right ml-2"></i></a>
-                </div>
-                
-                <!-- Service Card 3 -->
-                <div class="bg-white p-8 rounded-xl shadow-md transition-all duration-300 feature-card scroll-hidden">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-users text-2xl text-blue-600"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">Study Spaces</h3>
-                    <p class="text-gray-600 mb-4">Modern, comfortable study areas with computer access and high-speed internet for productive learning.</p>
-                    <a href="#contact" class="text-blue-600 font-medium inline-flex items-center">View Facilities <i class="fas fa-arrow-right ml-2"></i></a>
-                </div>
-                
-                <!-- Service Card 4 -->
-                <div class="bg-white p-8 rounded-xl shadow-md transition-all duration-300 feature-card scroll-hidden">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-chalkboard-teacher text-2xl text-blue-600"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">Workshops</h3>
-                    <p class="text-gray-600 mb-4">Regular workshops on emerging technologies, digital skills, and career development.</p>
-                    <a href="#register" class="text-blue-600 font-medium inline-flex items-center">Upcoming Events <i class="fas fa-arrow-right ml-2"></i></a>
-                </div>
-                
-                <!-- Service Card 5 -->
-                <div class="bg-white p-8 rounded-xl shadow-md transition-all duration-300 feature-card scroll-hidden">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-print text-2xl text-blue-600"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">Printing & Copying</h3>
-                    <p class="text-gray-600 mb-4">High-quality printing, scanning, and copying services at competitive prices.</p>
-                    <a href="#contact" class="text-blue-600 font-medium inline-flex items-center">Service Details <i class="fas fa-arrow-right ml-2"></i></a>
-                </div>
-                
-                <!-- Service Card 6 -->
-                <div class="bg-white p-8 rounded-xl shadow-md transition-all duration-300 feature-card scroll-hidden">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-headset text-2xl text-blue-600"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold mb-3">Tech Support</h3>
-                    <p class="text-gray-600 mb-4">Expert assistance for computer troubleshooting and software issues.</p>
-                    <a href="#contact" class="text-blue-600 font-medium inline-flex items-center">Get Help <i class="fas fa-arrow-right ml-2"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Library Section -->
-    <section id="library" class="py-20 px-6 bg-white">
-        <div class="container mx-auto">
-            <div class="text-center mb-16 scroll-hidden">
-                <h2 class="text-3xl font-bold text-blue-800 mb-4">Our Library</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Explore our extensive collection of resources tailored for students, professionals, and lifelong learners.</p>
-                <div class="w-24 h-1 bg-blue-600 mx-auto mt-4"></div>
-            </div>
-            
-            <div class="flex flex-col md:flex-row mb-16">
-                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10 scroll-hidden">
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9dd6d8f2-2571-48d9-908e-fecd226091ec.png" alt="Modern library interior view showing bookshelves and reading areas - bright space with natural light and comfortable seating" class="rounded-lg shadow-lg">
-                </div>
-                <div class="md:w-1/2 scroll-hidden">
-                    <h3 class="text-2xl font-semibold text-blue-800 mb-6">A Treasure Trove of Knowledge</h3>
-                    <p class="text-gray-700 mb-4">Our library houses over 4,000 titles across various disciplines including computer science, business, literature, and general knowledge. We continuously update our collection to serve our community's evolving needs.</p>
-                    <p class="text-gray-700 mb-6">Enjoy our quiet reading zones, group study rooms, and digital resource stations designed to enhance your learning experience.</p>
-                    
-                    <div class="mb-6">
-                        <h4 class="font-semibold mb-3 text-blue-800">Library Services:</h4>
-                        <ul class="space-y-2 text-gray-700">
-                            <li class="flex items-start">
-                                <span class="text-blue-600 mr-2 mt-1"><i class="fas fa-check"></i></span>
-                                <span>Regular book borrowing for members</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-blue-600 mr-2 mt-1"><i class="fas fa-check"></i></span>
-                                <span>Access to digital resources including e-books and academic journals</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-blue-600 mr-2 mt-1"><i class="fas fa-check"></i></span>
-                                <span>Research assistance from trained staff</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-blue-600 mr-2 mt-1"><i class="fas fa-check"></i></span>
-                                <span>Weekly reading programs and book clubs</span>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <div class="flex flex-wrap">
-                        <a href="#register" class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold mr-4 mb-4 btn-primary">Become a Member</a>
-                        <a href="#contact" class="border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-full font-semibold mb-4 btn-primary">Library Hours</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Book Categories -->
-            <div class="mb-16 scroll-hidden">
-                <h3 class="text-2xl font-semibold text-center text-blue-800 mb-8">Browse Our Collection Categories</h3>
-                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
-                    <div class="bg-blue-50 p-4 rounded-lg text-center">
-                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                            <i class="fas fa-code text-xl text-blue-600"></i>
-                        </div>
-                        <span class="font-medium">Computer Science</span>
-                    </div>
-                    <div class="bg-blue-50 p-4 rounded-lg text-center">
-                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                            <i class="fas fa-chart-line text-xl text-blue-600"></i>
-                        </div>
-                        <span class="font-medium">Business</span>
-                    </div>
-                    <div class="bg-blue-50 p-4 rounded-lg text-center">
-                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                            <i class="fas fa-atom text-xl text-blue-600"></i>
-                        </div>
-                        <span class="font-medium">Science</span>
-                    </div>
-                    <div class="bg-blue-50 p-4 rounded-lg text-center">
-                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                            <i class="fas fa-book-open text-xl text-blue-600"></i>
-                        </div>
-                        <span class="font-medium">Literature</span>
-                    </div>
-                    <div class="bg-blue-50 p-4 rounded-lg text-center">
-                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                            <i class="fas fa-history text-xl text-blue-600"></i>
-                        </div>
-                        <span class="font-medium">History</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Featured Books -->
-            <div class="scroll-hidden">
-                <h3 class="text-2xl font-semibold text-center text-blue-800 mb-8">Featured Books This Month</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-                    <div class="bg-white p-4 rounded-lg shadow-md border border-gray-100 transform transition-transform hover:-translate-y-2">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/86b51cdf-9795-4377-99fb-2fc7dca80a60.png" alt="Book cover - Artificial Intelligence: A Modern Approach by Stuart Russell - blue cover with circuit pattern" class="w-full h-48 object-cover rounded mb-4">
-                        <h4 class="font-semibold">Artificial Intelligence: A Modern Approach</h4>
-                        <p class="text-sm text-gray-600 mb-2">Stuart Russell</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm font-medium">Computer Science</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Available</span>
-                        </div>
-                    </div>
-                    <div class="bg-white p-4 rounded-lg shadow-md border border-gray-100 transform transition-transform hover:-translate-y-2">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/36597ba0-0842-4e6c-a227-8b3ca810b7ef.png" alt="Book cover - Clean Code by Robert Martin - yellow cover with minimalist design" class="w-full h-48 object-cover rounded mb-4">
-                        <h4 class="font-semibold">Clean Code</h4>
-                        <p class="text-sm text-gray-600 mb-2">Robert Martin</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm font-medium">Programming</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Available</span>
-                        </div>
-                    </div>
-                    <div class="bg-white p-4 rounded-lg shadow-md border border-gray-100 transform transition-transform hover:-translate-y-2">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/24c49133-ca90-46e1-a49f-ae7f1528ecbf.png" alt="Book cover - Sapiens by Yuval Noah Harari - earth tones with human silhouette" class="w-full h-48 object-cover rounded mb-4">
-                        <h4 class="font-semibold">Sapiens</h4>
-                        <p class="text-sm text-gray-600 mb-2">Yuval Noah Harari</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm font-medium">History</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Available</span>
-                        </div>
-                    </div>
-                    <div class="bg-white p-4 rounded-lg shadow-md border border-gray-100 transform transition-transform hover:-translate-y-2">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6b0ef462-4e09-42fa-93b4-b151ec4b3ce3.png" alt="Book cover - Atomic Habits by James Clear - white cover with blue dots pattern" class="w-full h-48 object-cover rounded mb-4">
-                        <h4 class="font-semibold">Atomic Habits</h4>
-                        <p class="text-sm text-gray-600 mb-2">James Clear</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-sm font-medium">Self-Help</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Available</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Testimonials Section -->
-    <section class="py-20 px-6 bg-gray-50">
-        <div class="container mx-auto">
-            <div class="text-center mb-16 scroll-hidden">
-                <h2 class="text-3xl font-bold text-blue-800 mb-4">What Our Members Say</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Hear from our community of learners and readers about their experiences.</p>
-                <div class="w-24 h-1 bg-blue-600 mx-auto mt-4"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="bg-white p-6 rounded-xl shadow-md scroll-hidden">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
-                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/de14c5da-517b-4668-8832-16f7bebb9972.png" alt="Portrait of Sarah K. - young woman with glasses smiling" class="w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <h4 class="font-semibold">Sarah K.</h4>
-                            <p class="text-sm text-gray-600">Computer Science Student</p>
-                        </div>
-                    </div>
-                    <div class="text-gray-700 mb-4">
-                        <p>"The Python course at RSSA completely transformed my coding skills. The instructors breakdown complex concepts into easy-to-understand lessons. The library's tech books collection is also fantastic!"</p>
-                    </div>
-                    <div class="text-yellow-500">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 2 -->
-                <div class="bg-white p-6 rounded-xl shadow-md scroll-hidden">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
-                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bc57dd8a-c764-4d3d-8235-2e8b0092452c.png" alt="Portrait of Michael T. - middle-aged man with beard smiling" class="w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <h4 class="font-semibold">Michael T.</h4>
-                            <p class="text-sm text-gray-600">Small Business Owner</p>
-                        </div>
-                    </div>
-                    <div class="text-gray-700 mb-4">
-                        <p>"As someone who wasn't tech-savvy, the digital literacy workshop was a game-changer for my business. The patient instructors helped me understand how to better manage my online presence and operations."</p>
-                    </div>
-                    <div class="text-yellow-500">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 3 -->
-                <div class="bg-white p-6 rounded-xl shadow-md scroll-hidden">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
-                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/18a3506a-c8eb-404c-aa64-fc8a205a1dbc.png" alt="Portrait of Priya R. - young woman with long hair studying" class="w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <h4 class="font-semibold">Priya R.</h4>
-                            <p class="text-sm text-gray-600">College Student</p>
-                        </div>
-                    </div>
-                    <div class="text-gray-700 mb-4">
-                        <p>"The library is my second home! The quiet study areas and computer access make it perfect for my research projects. The staff is always helpful in finding the right resources for my studies."</p>
-                    </div>
-                    <div class="text-yellow-500">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 px-6 bg-white">
-        <div class="container mx-auto">
-            <div class="text-center mb-16 scroll-hidden">
-                <h2 class="text-3xl font-bold text-blue-800 mb-4">Contact Us</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Have questions or want to learn more about our services? Get in touch!</p>
-                <div class="w-24 h-1 bg-blue-600 mx-auto mt-4"></div>
-            </div>
-            
-            <div class="flex flex-col md:flex-row">
-                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10 scroll-hidden">
-                    <div class="bg-gray-50 p-8 rounded-xl shadow-sm">
-                        <h3 class="text-xl font-semibold mb-6 text-blue-800">Contact Information</h3>
-                        
-                        <div class="space-y-5">
-                            <div class="flex items-start">
-                                <div class="bg-blue-100 p-3 rounded-full mr-4">
-                                    <i class="fas fa-map-marker-alt text-blue-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium">Address</h4>
-                                    <p class="text-gray-600">Hanuman mandir ke samne 
-Balaji school dress wali gali (julana 126101 , jind)</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="bg-blue-100 p-3 rounded-full mr-4">
-                                    <i class="fas fa-phone-alt text-blue-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium">Phone</h4>
-                                    <p class="text-gray-600">+91 9518068084</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="bg-blue-100 p-3 rounded-full mr-4">
-                                    <i class="fas fa-envelope text-blue-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium">Email</h4>
-                                    <p class="text-gray-600">Mamta.jind1986@gmail.com</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="bg-blue-100 p-3 rounded-full mr-4">
-                                    <i class="fas fa-clock text-blue-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium">Opening Hours</h4>
-                                    <p class="text-gray-600">Monday - saturday: 8:00 AM - 5:00 PM</p>
-                                    
-                                    <p class="text-gray-600">Sunday: Closed</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-8">
-                            <h4 class="font-medium mb-4 text-blue-800">Follow Us</h4>
-                            <div class="flex space-x-4">
-                                <a href="#" class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition-colors">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="#" class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition-colors">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="#" class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition-colors">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                                <a href="#" class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition-colors">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                                <a href="https://wa.me/918816012576" class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600 hover:bg-green-600 hover:text-white transition-colors">
-                                    <i class="fab fa-whatsapp"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="md:w-1/2 scroll-hidden">
-                    <div class="bg-gray-50 p-8 rounded-xl shadow-sm">
-                        <h3 class="text-xl font-semibold mb-6 text-blue-800">Send Us a Message</h3>
-                        <form>
-                            <div class="mb-4">
-                                <label class="block text-gray-700 mb-2" for="name">Full Name</label>
-                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            </div>
-                            <div class="mb-4">
-                                <label class="block text-gray-700 mb-2" for="email">Email Address</label>
-                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            </div>
-                            <div class="mb-4">
-                                <label class="block text-gray-700 mb-2" for="subject">Subject</label>
-                                <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            </div>
-                            <div class="mb-6">
-                                <label class="block text-gray-700 mb-2" for="message">Message</label>
-                                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-                            </div>
-                            <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold w-full btn-primary">Send Message</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Register Now CTA -->
-    <section id="register" class="py-16 px-6 bg-blue-600 text-white">
-        <div class="container mx-auto text-center scroll-hidden">
-            <h2 class="text-3xl font-bold mb-6">Ready to Join RSSA Computer Center & Library?</h2>
-            <p class="text-xl mb-8 max-w-3xl mx-auto">Sign up today and unlock access to all our courses, resources, and facilities designed to support your educational journey.</p>
-            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="#contact" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold btn-primary">Visit Us Today</a>
-                <a href="tel:+919518068084" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold btn-primary">Call Now</a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-300 py-12 px-6">
-        <div class="container mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <div class="flex items-center mb-4">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c4a41268-3dec-4ec9-b405-a78b949421e3.png" alt="RSSA Computer Center small logo - minimalist icon with computer and book" class="h-10 mr-2">
-                        <span class="text-xl font-bold text-white">RSSA</span>
-                    </div>
-                    <p class="mb-4">Empowering the community through education and technology since 2005.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                
-                <div>
-                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#home" class="hover:text-white">Home</a></li>
-                        <li><a href="#about" class="hover:text-white">About Us</a></li>
-                        <li><a href="#services" class="hover:text-white">Services</a></li>
-                        <li><a href="#library" class="hover:text-white">Library</a></li>
-                        <li><a href="#contact" class="hover:text-white">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-white font-semibold mb-4">Services</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-white">Computer Courses</a></li>
-                        <li><a href="#" class="hover:text-white">Library Membership</a></li>
-                        <li><a href="#" class="hover:text-white">Study Spaces</a></li>
-                        <li><a href="#" class="hover:text-white">Workshops</a></li>
-                        <li><a href="#" class="hover:text-white">Tech Support</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="text-white font-semibold mb-4">Newsletter</h4>
-                    <p class="mb-4">Subscribe to our newsletter for updates on new courses, events, and resources.</p>
-                    <form>
-                        <div class="flex">
-                            <input type="email" placeholder="Your email" class="px-4 py-2 bg-gray-800 text-white rounded-l-lg focus:outline-none w-full">
-                            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-r-lg hover:bg-blue-700"><i class="fas fa-paper-plane"></i></button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-800 pt-8">
-                <div class="flex flex-col md:flex-row justify-between items-center">
-                    <p>© 2023 RSSA Computer Center & Library. All rights reserved.</p>
-                    <div class="flex space-x-6 mt-4 md:mt-0">
-                        <a href="#" class="hover:text-white">Privacy Policy</a>
-                        <a href="#" class="hover:text-white">Terms of Service</a>
-                        <a href="#" class="hover:text-white">FAQ</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    
-    <!-- WhatsApp & Scroll to Top Buttons -->
-    <a href="https://wa.me/918816012576" target="_blank" class="fixed bottom-24 right-8 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-all duration-300 z-50">
-        <i class="fab fa-whatsapp text-2xl"></i>
-    </a>
-    <button id="scrollTopBtn" class="fixed bottom-8 right-8 bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-blue-700">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-    <!-- Phone Call Floating Button -->
-<a href="tel:+919518068084" class="call-float" title="Call Us">
-  <img
-    src="https://img.icons8.com/fluency/48/phone.png"
-    alt="Call"
-  />
-</a>
 
-<style>
-  .call-float {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    z-index: 100;
-    cursor: pointer;
-    background-color: #0c9;
-    border-radius: 50%;
-    padding: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  }
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="header-content">
+    <div class="logo-section">
+      <img src="https://i.ibb.co/9HfWmtby/9b40df44cf64.png" id="logo" alt="Logo">
+      <div class="header-title">
+        <h1 id="centerName">Loading...</h1>
+        <div id="centerStatus" class="status-badge">
+          <span class="status-dot"></span>
+          Loading...
+        </div>
+      </div>
+    </div>
+    <div class="nav-buttons">
+      <a href="student.html" class="nav-btn secondary">
+        <i class="fas fa-user-graduate"></i> Student Portal
+      </a>
+      <a href="coming.html" class="nav-btn primary">
+        <i class="fas fa-user-plus"></i> required documents
+      </a>
+    </div>
+  </div>
+</header>
 
-  .call-float img {
-    width: 40px;
-    height: 40px;
-  }
-</style>
-<!-- Floating Google Map Button -->
-<a href="https://maps.app.goo.gl/i9QBUmNS9Q4rDnc1A" target="_blank" class="map-float" title="Visit Our Location">
-  <img src="https://img.icons8.com/fluency/48/marker.png" alt="Map Location" />
-</a>
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-slider" id="heroSlider">
+    <!-- Slides will be loaded from Firebase -->
+  </div>
+  <div class="hero-overlay">
+    <div class="hero-content">
+      <h1>Best Computer <span>Education</span> in Julana</h1>
+      <p>Learn from experts and boost your career with professional computer courses</p>
+      <div class="hero-buttons">
+        <a href="signup.html" class="btn-hero primary">
+          <i class="fas fa-user-plus"></i> Apply Now
+        </a>
+        <a href="#courses" class="btn-hero secondary">
+          <i class="fas fa-book"></i> View Courses
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-nav" id="heroNav"></div>
+</section>
 
-<style>
-  .map-float {
-    position: fixed;
-    bottom: 90px; /* Adjust if other buttons like call or WhatsApp exist */
-    left: 20px;
-    z-index: 100;
-    background-color: #e91e63;
-    border-radius: 50%;
-    padding: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  }
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-content" id="marqueeText">
+    <!-- Loaded from Firebase -->
+    <span>📚 Welcome to RSSA Computer Center | Admissions Open | New Batches Starting Soon | Call: +91 95180 68084 | </span>
+    <span>📚 Welcome to RSSA Computer Center | Admissions Open | New Batches Starting Soon | Call: +91 95180 68084 | </span>
+  </div>
+</div>
 
-  .map-float img {
-    width: 40px;
-    height: 40px;
-  }
-</style>
+<!-- STATS -->
+<section class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon"><i class="fas fa-graduation-cap"></i></div>
+      <h3 id="studentCount">0</h3>
+      <p>Active Students</p>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon"><i class="fas fa-book"></i></div>
+      <h3 id="courseCount">0</h3>
+      <p>Professional Courses</p>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon"><i class="fas fa-award"></i></div>
+      <h3 id="yearCount">0</h3>
+      <p>Years of Excellence</p>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section class="courses-section" id="courses">
+  <div class="section-header">
+    <h2>Our Courses</h2>
+    <p>Choose from our professional computer courses</p>
+  </div>
+  <div class="courses-grid" id="coursesGrid">
+    <!-- Loaded from Firebase -->
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section">
+  <div class="about-container">
+    <div class="about-content">
+      <h2>Why Choose RSSA?</h2>
+      <p id="aboutContent">Loading...</p>
+      <div class="about-features">
+        <div class="about-feature">
+          <i class="fas fa-check-circle"></i>
+          <span>Expert Trainers</span>
+        </div>
+        <div class="about-feature">
+          <i class="fas fa-check-circle"></i>
+          <span>Certificate</span>
+        </div>
+        <div class="about-feature">
+          <i class="fas fa-check-circle"></i>
+          <span>Job Support</span>
+        </div>
+        <div class="about-feature">
+          <i class="fas fa-check-circle"></i>
+          <span>Placement Assistance</span>
+        </div>
+      </div>
+      <a href="signup.html" class="btn-hero primary">
+        <i class="fas fa-user-plus"></i> Enroll Now
+      </a>
+    </div>
+    <div class="about-image">
+      <img id="aboutImage" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500" alt="About">
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location-section">
+  <h2>Visit Our Center</h2>
+  <p>Click on the image to get directions</p>
+  <div class="location-image" id="locationImage">
+    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800" alt="Location">
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-container">
+    <div class="contact-info">
+      <h2>Get In Touch</h2>
+      <p>Have questions? We'd love to hear from you!</p>
+      
+      <div class="contact-item">
+        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div class="contact-details">
+          <h4>Address</h4>
+          <p>Bus Stand Road, Julana, Haryana 126101</p>
+        </div>
+      </div>
+      
+      <div class="contact-item">
+        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+        <div class="contact-details">
+          <h4>Phone</h4>
+          <p>+91 95180 68084</p>
+        </div>
+      </div>
+      
+      <div class="contact-item">
+        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+        <div class="contact-details">
+          <h4>Email</h4>
+          <p>rssacomputer@gmail.com</p>
+        </div>
+      </div>
+      
+      <div class="social-links">
+        <a href="https://wa.me/919518068084" target="_blank" class="social-link whatsapp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://facebook.com" target="_blank" class="social-link facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com" target="_blank" class="social-link instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com" target="_blank" class="social-link youtube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
     
-    <script>
-        // Scroll reveal animations
-        const scrollElements = document.querySelectorAll('.scroll-hidden');
-        
-        const elementInView = (el) => {
-            const elementTop = el.getBoundingClientRect().top;
-            return (
-                elementTop <= (window.innerHeight || document.documentElement.clientHeight)
-            );
-        };
-        
-        const displayScrollElement = (element) => {
-            element.classList.add('scroll-show');
-        };
-        
-        const hideScrollElement = (element) => {
-            element.classList.remove('scroll-show');
-        };
-        
-        const handleScrollAnimation = () => {
-            scrollElements.forEach((el) => {
-                if (elementInView(el)) {
-                    displayScrollElement(el);
-                }
-            });
-        };
-        
-        window.addEventListener('scroll', () => {
-            handleScrollAnimation();
-            
-            // Show/hide scroll to top button
-            const scrollTopBtn = document.getElementById('scrollTopBtn');
-            if (window.pageYOffset > 300) {
-                scrollTopBtn.classList.remove('opacity-0', 'invisible');
-                scrollTopBtn.classList.add('opacity-100', 'visible');
-            } else {
-                scrollTopBtn.classList.remove('opacity-100', 'visible');
-                scrollTopBtn.classList.add('opacity-0', 'invisible');
-            }
-        });
-        
-        // Initialize animations on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                handleScrollAnimation();
-            }, 300);
-        });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-        // Scroll to top button
-        document.getElementById('scrollTopBtn').addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    </script>
+    <div class="contact-form">
+      <h3>Send us a Message</h3>
+      <form id="contactForm">
+        <div class="form-group">
+          <input type="text" id="name" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <input type="tel" id="mobile" placeholder="Mobile Number" required>
+        </div>
+        <div class="form-group">
+          <textarea id="message" placeholder="Your Message" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">
+          <i class="fas fa-paper-plane"></i> Send Message
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-logo">RSSA Computer Center</div>
+    <p>Bus Stand Road, Julana, Haryana</p>
+    <p>Powered by RSSA Computer Center</p>
+  </div>
+  <div class="footer-bottom">
+    © 2024 RSSA Computer Center. All Rights Reserved.
+  </div>
+</footer>
+
+<!-- FLOATING BUTTONS -->
+<a href="tel:+919518068084" class="floating-call"><i class="fas fa-phone"></i></a>
+<div class="notify-btn" id="notifyBtn"><i class="fas fa-bell"></i></div>
+<div class="notify-box" id="notifyBox">
+  <div class="notify-header">Notifications</div>
+  <div class="notify-list" id="notificationList"></div>
+</div>
+
+<!-- POPUP -->
+<div class="popup-overlay" id="popupOverlay">
+  <div class="popup-box" style="position: relative;">
+    <span class="popup-close" id="popupClose">✕</span>
+    <img id="popupImage" src="" alt="Popup">
+    <div class="popup-content">
+      <h3 id="popupTitle">Welcome!</h3>
+      <p id="popupMessage">Check our latest offers</p>
+      <a href="signup.html" class="popup-btn" id="popupButton">Apply Now</a>
+    </div>
+  </div>
+</div>
+
+<!-- STATUS TOAST -->
+<div class="status-toast" id="statusToast"></div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+import { getFirestore, doc, getDoc, getDocs, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAfzNKih4tBJulHl2nvUrqT57el14F1qEA",
+  authDomain: "computerweb-e00b2.firebaseapp.com",
+  projectId: "computerweb-e00b2",
+  storageBucket: "computerweb-e00b2.appspot.com",
+  messagingSenderId: "272175031990",
+  appId: "1:272175031990:web:cca4e8f1966456bebde817"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Header scroll effect
+window.addEventListener('scroll', () => {
+  const header = document.getElementById('header');
+  if (window.scrollY > 50) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+});
+
+// Load Header
+async function loadHeader() {
+  try {
+    const snap = await getDoc(doc(db, "settings", "header"));
+    if (snap.exists()) {
+      const data = snap.data();
+      document.getElementById('logo').src = data.logoURL || "https://i.ibb.co/9HfWmtby/9b40df44cf64.png";
+      document.getElementById('centerName').innerText = data.centerName || "RSSA Computer Center";
+    }
+  } catch(e) { console.log(e); }
+}
+
+// Load Status
+async function loadStatus() {
+  try {
+    const snap = await getDoc(doc(db, "settings", "status"));
+    const statusEl = document.getElementById('centerStatus');
+    if (snap.exists() && snap.data().isOpen) {
+      statusEl.className = "status-badge open";
+      statusEl.innerHTML = '<span class="status-dot"></span> OPEN';
+    } else {
+      statusEl.className = "status-badge closed";
+      statusEl.innerHTML = '<span class="status-dot"></span> CLOSED';
+    }
+  } catch(e) { console.log(e); }
+}
+
+// Load Marquee
+async function loadMarquee() {
+  try {
+    const snap = await getDoc(doc(db, "settings", "marquee"));
+    if (snap.exists()) {
+      const text = snap.data().text;
+      document.getElementById('marqueeText').innerHTML = `<span>📚 ${text} | </span><span>📚 ${text} | </span>`;
+    }
+  } catch(e) { console.log(e); }
+}
+
+// Load Slider
+let sliderImages = [];
+let currentSlide = 0;
+
+async function loadSlider() {
+  try {
+    const snap = await getDocs(collection(db, "sliderImages"));
+    snap.forEach(d => sliderImages.push(d.data().url));
+    
+    if (sliderImages.length === 0) {
+      sliderImages = ["https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200"];
+    }
+    
+    const sliderEl = document.getElementById('heroSlider');
+    const navEl = document.getElementById('heroNav');
+    
+    sliderImages.forEach((img, i) => {
+      sliderEl.innerHTML += `<div class="hero-slide ${i === 0 ? 'active' : ''}"><img src="${img}" alt="Slider"></div>`;
+      navEl.innerHTML += `<div class="hero-dot ${i === 0 ? 'active' : ''}" onclick="goToSlide(${i})"></div>`;
+    });
+    
+    setInterval(nextSlide, 4000);
+  } catch(e) { console.log(e); }
+}
+
+function nextSlide() {
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-dot');
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = (currentSlide + 1) % sliderImages.length;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+
+window.goToSlide = function(i) {
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-dot');
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = i;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+
+// Load Stats
+async function loadStats() {
+  try {
+    const snap = await getDoc(doc(db, "stats", "main"));
+    if (snap.exists()) {
+      const data = snap.data();
+      document.getElementById('studentCount').innerText = data.students || 0;
+      document.getElementById('courseCount').innerText = data.courses || 0;
+      document.getElementById('yearCount').innerText = data.years || 0;
+    }
+  } catch(e) { console.log(e); }
+}
+
+// Load Courses
+const courseIcons = ['💻', '📊', '📈', '🧾', '📉', '🌐', '🐍', '☕', '🎨', '📢', '⌨️', '📱'];
+const courseColors = ['#e0f7ff', '#fff3e0', '#e8f5e9', '#fce4ec', '#f3e5f5', '#e0f2fe', '#fff8e1', '#f1f8e9', '#fce4ec', '#e8eaf6', '#e0f7ff'];
+
+async function loadCourses() {
+  try {
+    const snap = await getDocs(collection(db, "courses"));
+    const grid = document.getElementById('coursesGrid');
+    let i = 0;
+    snap.forEach(d => {
+      const c = d.data();
+      const icon = courseIcons[i % courseIcons.length];
+      const bg = courseColors[i % courseColors.length];
+      grid.innerHTML += `
+        <div class="course-card">
+          <div class="course-icon" style="background: ${bg};">${icon}</div>
+          <h3>${c.name}</h3>
+          <div class="duration"><i class="far fa-clock"></i> ${c.duration} Months</div>
+          <div class="fees">₹${c.fees}<span>/-</span></div>
+          <a href="signup.html" class="enroll-btn">Enroll Now</a>
+        </div>
+      `;
+      i++;
+    });
+  } catch(e) { console.log(e); }
+}
+
+// Load About
+async function loadAbout() {
+  try {
+    const snap = await getDoc(doc(db, "settings", "about"));
+    if (snap.exists()) {
+      document.getElementById('aboutContent').innerText = snap.data().content;
+      if (snap.data().imageURL) {
+        document.getElementById('aboutImage').src = snap.data().imageURL;
+      }
+    }
+  } catch(e) { console.log(e); }
+}
+
+// Load Location
+async function loadLocation() {
+  try {
+    const snap = await getDoc(doc(db, "settings", "location"));
+    if (snap.exists() && snap.data().imageURL) {
+      document.getElementById('locationImage').querySelector('img').src = snap.data().imageURL;
+    }
+    if (snap.exists() && snap.data().mapLink) {
+      document.getElementById('locationImage').onclick = () => window.open(snap.data().mapLink, '_blank');
+    }
+  } catch(e) { console.log(e); }
+}
+
+// Load Notifications
+document.getElementById('notifyBtn').onclick = () => {
+  document.getElementById('notifyBox').classList.toggle('show');
+};
+
+async function loadNotifications() {
+  try {
+    const snap = await getDocs(collection(db, "notifications"));
+    const list = document.getElementById('notificationList');
+    if (snap.empty) {
+      list.innerHTML = '<div class="notify-item"><p>No notifications</p></div>';
+      return;
+    }
+    snap.forEach(d => {
+      const n = d.data();
+      list.innerHTML += `<div class="notify-item"><h4>${n.title}</h4><p>${n.message}</p></div>`;
+    });
+  } catch(e) { console.log(e); }
+}
+
+// Load Popup
+async function loadPopup() {
+  try {
+    const snap = await getDoc(doc(db, "popup", "main"));
+    if (snap.exists() && snap.data().enabled) {
+      document.getElementById('popupTitle').innerText = snap.data().title;
+      document.getElementById('popupMessage').innerText = snap.data().message;
+      document.getElementById('popupImage').src = snap.data().imageURL;
+      document.getElementById('popupButton').href = snap.data().buttonLink;
+      document.getElementById('popupOverlay').style.display = 'flex';
+    }
+  } catch(e) { console.log(e); }
+}
+
+document.getElementById('popupClose').onclick = () => {
+  document.getElementById('popupOverlay').style.display = 'none';
+};
+
+// Contact Form
+document.getElementById('contactForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const mobile = document.getElementById('mobile').value.trim();
+  const message = document.getElementById('message').value.trim();
+  
+  if (!name || !mobile || !message) {
+    showToast('Please fill all fields!', 'error');
+    return;
+  }
+  
+  try {
+    await addDoc(collection(db, "messages"), {
+      name, mobile, message,
+      status: 'unread',
+      time: serverTimestamp()
+    });
+    showToast('Message sent successfully!', 'success');
+    document.getElementById('contactForm').reset();
+  } catch(err) {
+    showToast('Error sending message!', 'error');
+  }
+});
+
+function showToast(msg, type) {
+  const toast = document.getElementById('statusToast');
+  toast.innerText = msg;
+  toast.className = `status-toast ${type} show`;
+  setTimeout(() => toast.classList.remove('show'), 3000);
+}
+
+// Initialize
+loadHeader();
+loadStatus();
+loadMarquee();
+loadSlider();
+loadStats();
+loadCourses();
+loadAbout();
+loadLocation();
+loadNotifications();
+loadPopup();
+</script>
+
 </body>
 </html>
 

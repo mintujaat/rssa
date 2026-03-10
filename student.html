@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Portal - RSSA Computer Center</title>
+<link rel="icon" type="image/png" href="https://i.ibb.co/9HfWmtby/9b40df44cf64.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --primary: #0da6d8;
+  --primary-dark: #0879a3;
+  --secondary: #0d2a47;
+  --accent: #ffcc00;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --white: #ffffff;
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-500: #64748b;
+  --gray-700: #334155;
+  --gray-900: #0f172a;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, var(--secondary) 0%, #1a3a5c 50%, var(--primary-dark) 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* ===== HEADER ===== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: linear-gradient(135deg, var(--secondary) 0%, #1a3a5c 100%);
+  padding: 12px 20px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-section img {
+  height: 45px;
+}
+
+.header-title h1 {
+  color: var(--white);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.header-title p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.75rem;
+  margin-top: 2px;
+}
+
+/* ===== BACK BUTTON ===== */
+.back-btn {
+  position: fixed;
+  top: 80px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: var(--white);
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(-5px);
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  max-width: 550px;
+  margin: 80px auto 40px;
+}
+
+/* ===== LOGIN BOX ===== */
+.login-box {
+  background: var(--white);
+  border-radius: 25px;
+  padding: 40px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+  animation: slideUp 0.6s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.login-header h2 {
+  color: var(--gray-900);
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.login-header p {
+  color: var(--gray-500);
+  font-size: 1rem;
+}
+
+/* ===== FORM ===== */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  color: var(--gray-700);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid var(--gray-200);
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background: var(--gray-50);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: var(--white);
+  box-shadow: 0 0 0 4px rgba(13, 166, 216, 0.1);
+}
+
+/* ===== BUTTONS ===== */
+.submit-btn {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: var(--white);
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(13, 166, 216, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(13, 166, 216, 0.4);
+}
+
+/* ===== ERROR ===== */
+.error-msg {
+  color: #ef4444;
+  font-size: 0.9rem;
+  margin-top: 12px;
+  text-align: center;
+  padding: 12px;
+  background: #fef2f2;
+  border-radius: 10px;
+  border: 1px solid #fecaca;
+  display: none;
+}
+
+.error-msg.show {
+  display: block;
+  animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* ===== LOADER ===== */
+.loader {
+  display: none;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.loader.show {
+  display: block;
+}
+
+.loader div {
+  width: 30px;
+  height: 30px;
+  border: 3px solid var(--gray-200);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== DASHBOARD ===== */
+.dashboard {
+  display: none;
+  animation: slideUp 0.6s ease;
+}
+
+/* Profile Card */
+.profile-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 20px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--white);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-info h3 {
+  color: var(--gray-900);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.profile-info .info-row {
+  display: flex;
+  gap: 15px;
+  font-size: 0.85rem;
+  color: var(--gray-500);
+}
+
+.profile-info .info-row span {
+  background: var(--gray-100);
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* Fees Cards */
+.fees-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.fee-card {
+  background: var(--white);
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.fee-card.paid {
+  border-left: 4px solid var(--success);
+}
+
+.fee-card.pending {
+  border-left: 4px solid var(--warning);
+}
+
+.fee-label {
+  font-size: 0.85rem;
+  color: var(--gray-500);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.fee-amount {
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.fee-card.paid .fee-amount {
+  color: var(--success);
+}
+
+.fee-card.pending .fee-amount {
+  color: var(--warning);
+}
+
+/* Progress Bar */
+.progress-card {
+  background: var(--white);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: var(--gray-700);
+}
+
+.progress-track {
+  height: 12px;
+  background: var(--gray-200);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--success) 0%, #059669 100%);
+  border-radius: 6px;
+  transition: width 0.5s ease;
+}
+
+/* Payment History */
+.history-card {
+  background: var(--white);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.history-card h4 {
+  color: var(--gray-900);
+  font-size: 1rem;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.history-list {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.history-amount {
+  font-weight: 700;
+  color: var(--success);
+}
+
+.history-details {
+  font-size: 0.8rem;
+  color: var(--gray-500);
+}
+
+.history-time {
+  font-size: 0.75rem;
+  color: var(--gray-400);
+}
+
+.no-history {
+  text-align: center;
+  color: var(--gray-400);
+  padding: 20px;
+  font-size: 0.9rem;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.action-btn {
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+}
+
+.action-btn.secondary {
+  background: var(--gray-100);
+  color: var(--gray-700);
+  border: 2px solid var(--gray-200);
+}
+
+.action-btn.secondary:hover {
+  background: var(--gray-200);
+}
+
+.action-btn.primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: var(--white);
+  box-shadow: 0 6px 20px rgba(13, 166, 216, 0.3);
+}
+
+.action-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(13, 166, 216, 0.4);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  text-align: center;
+  padding: 30px 20px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .header-content {
+    justify-content: center;
+  }
+  
+  .header-title {
+    display: none;
+  }
+  
+  .back-btn {
+    top: 75px;
+    left: 10px;
+    padding: 10px 15px;
+    font-size: 0.85rem;
+  }
+  
+  .container {
+    margin-top: 70px;
+    padding: 0 10px;
+  }
+  
+  .login-box {
+    padding: 25px 20px;
+  }
+  
+  .login-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .profile-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .profile-info .info-row {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .fees-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .action-buttons {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-content">
+    <div class="logo-section">
+      <img src="https://i.ibb.co/9HfWmtby/9b40df44cf64.png" alt="Logo">
+      <div class="header-title">
+        <h1>RSSA Computer Center</h1>
+        <p>Student Portal</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- BACK BUTTON -->
+<a href="index.html" class="back-btn">
+  <i class="fas fa-arrow-left"></i> Back to Home
+</a>
+
+<div class="container">
+
+  <!-- LOGIN BOX -->
+  <div class="login-box" id="loginBox">
+    <div class="login-header">
+      <h2><i class="fas fa-user-graduate"></i> Student Portal</h2>
+      <p>Enter your Student ID to check fees status</p>
+    </div>
+
+    <div class="form-group">
+      <label>Student ID</label>
+      <input type="text" id="studentId" placeholder="e.g., rssa5" autocomplete="off">
+    </div>
+
+    <button class="submit-btn" onclick="fetchStudent()">
+      <i class="fas fa-search"></i> Check Status
+    </button>
+
+    <div class="loader" id="loginLoader">
+      <div></div>
+    </div>
+
+    <div id="errorText" class="error-msg"></div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="dashboard" id="dashboard">
+
+    <!-- Profile Card -->
+    <div class="profile-card">
+      <div class="avatar" id="photoBox">👤</div>
+      <div class="profile-info">
+        <h3 id="sName">Student Name</h3>
+        <div class="info-row">
+          <span id="sId">ID: -</span>
+          <span id="sCourse">Course: -</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fees Summary -->
+    <div class="fees-grid">
+      <div class="fee-card paid">
+        <div class="fee-label">✓ Paid Amount</div>
+        <div class="fee-amount" id="paidText">₹0</div>
+      </div>
+      <div class="fee-card pending">
+        <div class="fee-label">⏳ Pending Amount</div>
+        <div class="fee-amount" id="pendingText">₹0</div>
+      </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-card">
+      <div class="progress-header">
+        <span>Payment Progress</span>
+        <span id="progressPercent">0%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <!-- Payment History -->
+    <div class="history-card">
+      <h4><i class="fas fa-history"></i> Payment History</h4>
+      <div class="history-list" id="historyBox">
+        <div class="no-history">No payment history</div>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <button class="action-btn secondary" onclick="goBack()">
+        <i class="fas fa-search"></i> Check Another
+      </button>
+      <button class="action-btn primary" onclick="downloadReceipt()">
+        <i class="fas fa-download"></i> Download Receipt
+      </button>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2024 RSSA Computer Center Julana</p>
+  <p>Bus Stand Road, Julana, Haryana</p>
+</footer>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAfzNKih4tBJulHl2nvUrqT57el14F1qEA",
+  authDomain: "computerweb-e00b2.firebaseapp.com",
+  projectId: "computerweb-e00b2",
+  storageBucket: "computerweb-e00b2.appspot.com",
+  messagingSenderId: "272175031990",
+  appId: "1:272175031990:web:cca4e8f1966456bebde817"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.fetchStudent = async function() {
+  const id = document.getElementById("studentId").value.trim().toLowerCase();
+  const error = document.getElementById("errorText");
+  const loader = document.getElementById("loginLoader");
+
+  error.classList.remove("show");
+  error.innerText = "";
+
+  if (id === "") {
+    error.innerText = "Please enter a Student ID";
+    error.classList.add("show");
+    return;
+  }
+
+  loader.classList.add("show");
+
+  try {
+    const ref = doc(db, "students", id);
+    const snap = await getDoc(ref);
+
+    loader.classList.remove("show");
+
+    if (!snap.exists()) {
+      error.innerText = "❌ Student ID not found in system";
+      error.classList.add("show");
+      return;
+    }
+
+    const data = snap.data();
+
+    // Hide login, show dashboard
+    document.getElementById("loginBox").style.display = "none";
+    document.getElementById("dashboard").style.display = "block";
+
+    // Fill student details
+    document.getElementById("sName").innerText = data.name || "N/A";
+    document.getElementById("sCourse").innerText = data.course || "N/A";
+    document.getElementById("sId").innerText = "ID: " + (data.student_id || id);
+
+    const paidFees = data.paid_fees || 0;
+    const pendingFees = data.pending_fees || 0;
+    const totalFees = paidFees + pendingFees;
+
+    document.getElementById("paidText").innerText = "₹" + paidFees.toLocaleString('en-IN');
+    document.getElementById("pendingText").innerText = "₹" + pendingFees.toLocaleString('en-IN');
+
+    // Calculate and show progress
+    const progressPercent = totalFees > 0 ? Math.round((paidFees / totalFees) * 100) : 0;
+    document.getElementById("progressPercent").innerText = progressPercent + "%";
+    document.getElementById("progressFill").style.width = progressPercent + "%";
+
+    // Photo
+    if (data.photo_url) {
+      document.getElementById("photoBox").innerHTML = `<img src="${data.photo_url}" alt="Student Photo">`;
+    }
+
+    // Payment history
+    const historyBox = document.getElementById("historyBox");
+    historyBox.innerHTML = "";
+
+    if (data.payments && data.payments.length > 0) {
+      data.payments.forEach(p => {
+        historyBox.innerHTML += `
+          <div class="history-item">
+            <div>
+              <div class="history-amount">+ ₹${p.amount ? p.amount.toLocaleString('en-IN') : 0}</div>
+              <div class="history-details">${p.method || "Online"}</div>
+            </div>
+            <div class="history-time">${p.time || "N/A"}</div>
+          </div>`;
+      });
+    } else {
+      historyBox.innerHTML = `<div class="no-history">No payment history yet</div>`;
+    }
+
+  } catch (err) {
+    loader.classList.remove("show");
+    error.innerText = "⚠️ Error: " + (err.message || "Something went wrong");
+    error.classList.add("show");
+  }
+}
+
+window.goBack = function() {
+  document.getElementById("dashboard").style.display = "none";
+  document.getElementById("loginBox").style.display = "block";
+  document.getElementById("studentId").value = "";
+  document.getElementById("errorText").classList.remove("show");
+}
+
+window.downloadReceipt = function() {
+  const name = document.getElementById("sName").innerText;
+  const id = document.getElementById("sId").innerText;
+  const paid = document.getElementById("paidText").innerText;
+  const pending = document.getElementById("pendingText").innerText;
+  const date = new Date().toLocaleDateString('en-IN');
+
+  const content = `
+╔══════════════════════════════════╗
+║     RSSA FEES RECEIPT            ║
+╠══════════════════════════════════╣
+Student Name: ${name}
+${id}
+Date: ${date}
+
+Paid Amount:   ${paid}
+Pending Amount: ${pending}
+
+Thank you for your payment!
+╚══════════════════════════════════╝
+  `;
+
+  const element = document.createElement("a");
+  element.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(content));
+  element.setAttribute("download", `receipt_${id.replace('ID: ', '')}_${date.replace(/\//g, '-')}.txt`);
+  element.style.display = "none";
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+}
+</script>
+
+</body>
+</html>
+
